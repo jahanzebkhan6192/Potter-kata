@@ -10,6 +10,16 @@ IDiscountStrategy applydiscounts = new Discount();
 
 do
 {
+    double price = NewMethod(booklist, applydiscounts);
+
+    Console.WriteLine($"The total price is: {price}");
+    price = 0;
+    Console.WriteLine();
+
+} while (true);
+
+static double NewMethod(List<Book>? booklist, IDiscountStrategy applydiscounts)
+{
     if (booklist != null && booklist.Any())
     {
         foreach (Book book in booklist)
@@ -34,9 +44,6 @@ do
         if (booklist != null)
             price += applydiscounts.calculatePrice(booklist, Discount.Key, Discount.Value);
     }
-   
-    Console.WriteLine($"The total price is: {price}");
-    price = 0;
-    Console.WriteLine();    
 
-} while (true);
+    return price;
+}
