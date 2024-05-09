@@ -13,18 +13,23 @@ namespace Potter_kata.Discounts
         public double calculatePrice(List<Book> books, int booksRequiredInSeries, double discount)
         {
             price = 0;
+            // apply discount as long as it is applicable - meets the number of books required
             while (books.Where(x => x.Quantity > 0).Count() >= booksRequiredInSeries)
             {
+                // book list the discount needs to be applied to in list
                 var thesebooks = books.Where(x => x.Quantity > 0).ToList();
-                ApplyDiscount(thesebooks, booksRequiredInSeries, discount);
+                ApplyDiscount(thesebooks, discount);
             }
             return price;
         }
 
-        private void ApplyDiscount(List<Book> books, int booksRequiredInSeries, double discount)
+        // calcuate price after discount and then lessen the count of books by one to those its been applied to in list
+        private void ApplyDiscount(List<Book> books, double discount)
         {            
-                price += books.Sum(x => x.SinglePrice) * discount;
-                books.TakeWhile(s => s.Quantity > 0).ToList().ForEach(s => s.Quantity -= 1);            
+            // sum the price of books in list and apply discount    
+            price += books.Sum(x => x.SinglePrice) * discount;
+            // lessen count of these books in the list 
+            books.TakeWhile(s => s.Quantity > 0).ToList().ForEach(s => s.Quantity -= 1);            
         }
     }
 }
