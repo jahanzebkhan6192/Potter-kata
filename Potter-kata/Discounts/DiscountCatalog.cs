@@ -23,6 +23,8 @@ namespace Potter_kata.Discounts
         public const double TWENTY_PERCENT = 0.8;
         public const double TWENTY_FIVE_PERCENT = 0.75;
 
+
+        // A list of discounts that can be applied to an order with books required
         public static readonly Dictionary<int, double> Catalogue = new Dictionary<int, double>
         {
             {ONE_BOOKS_REQUIRED, NONE},

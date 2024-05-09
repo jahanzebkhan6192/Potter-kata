@@ -6,7 +6,7 @@ Console.WriteLine("Hello, World!");
 
 string json = File.ReadAllText("BookList.json");
 var booklist = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Book>>(json);
-// booklist is a list of all books that can be ordered with their respected price
+//Booklist is a list of all books that can be ordered with their respective prices.
 IDiscountStrategy discountstrategy = new Discount();
 
 do
@@ -23,8 +23,8 @@ do
 static double ProcessOrder(List<Book>? booklist, IDiscountStrategy discountstrategy)
 {
     if (booklist != null && booklist.Any())
-    {   
-        // Set the quantity of books ordered for each type of book
+    {
+        // Determine the number of books ordered for each book type
         foreach (Book book in booklist)
         {
             Console.WriteLine($"Enter the quantity for book volume {book.Name} : ");
@@ -41,7 +41,7 @@ static double ProcessOrder(List<Book>? booklist, IDiscountStrategy discountstrat
         }
     }
     double price = 0;
-    // apply each discount to the order using discount catalog
+    // Apply each discount to the order using the discount catalog.
     foreach (KeyValuePair<int, double> Discount in DiscountCatalog.Catalogue.Reverse())
     {
         if (booklist != null)
