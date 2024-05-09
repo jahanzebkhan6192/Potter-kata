@@ -25,6 +25,7 @@ static double ProcessOrder(List<Book>? booklist, IDiscountStrategy discountstrat
     if (booklist != null && booklist.Any())
     {
         // Determine the number of books ordered for each book type
+        // and update the booklist
         foreach (Book book in booklist)
         {
             Console.WriteLine($"Enter the quantity for book volume {book.Name} : ");
